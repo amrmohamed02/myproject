@@ -21,10 +21,9 @@ class usercontrol extends Controller
     public function login(Request $request){
         $email = $request->input('email');
         $pass = $request->input('pass');
-        $row = DB::select("select name from user where email = ? and pass = ?",[$email,$pass]);
-       if(count($row)){
-        $arr = Array( 'name' =>$row);
-        return view('welcome',$arr);
+        $row = DB::tabel("user")->where('email',$email)->where('pass',$pass)->first();
+       if($row){
+        return view('welcome',['name',$row->name]);
        }
        else {
            echo "wrong email or password";
