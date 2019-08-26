@@ -71,13 +71,10 @@
                 <div class="title m-b-md">
                         {{ csrf_field() }}
 <br><br>
-@foreach ($name as $i)
     
-Welcome {{ ($i->name)}}
-@endforeach
+Welcome {{$name}}
 
-
-                </div>
+</div>
 
           
     </body>
